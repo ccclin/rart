@@ -5,5 +5,7 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
+    return false if session["uuid"].nil?
+    @@current_user ||= UserSession.find_by(uuid: session["uuid"])&.user
   end
 end

@@ -1,4 +1,4 @@
-class Api::ApiAuthController < ActionController::Base
+class Api::ApiAuthController < ApplicationController
   before_action :check_same_user?
 
   private

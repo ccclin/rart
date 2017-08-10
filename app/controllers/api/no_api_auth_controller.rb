@@ -1,4 +1,4 @@
-class Api::NoApiAuthController < ActionController::Base
+class Api::NoApiAuthController < ApplicationController
   before_action :do_only_unregistration
 
   private
