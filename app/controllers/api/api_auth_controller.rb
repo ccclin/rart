@@ -4,7 +4,7 @@ class Api::ApiAuthController < ActionController::Base
   private
 
   def check_same_user?
-    unless @current_user
+    unless current_user
       render json: { error: 'You have to login', status: 400 }, status: 400
     end
   end

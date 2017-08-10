@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808144502) do
+ActiveRecord::Schema.define(version: 20170810011830) do
+
+  create_table "user_sessions", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "uuid"
+    t.datetime "expired_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_sessions_on_user_id"
+    t.index ["uuid"], name: "index_user_sessions_on_uuid", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", default: "", null: false
