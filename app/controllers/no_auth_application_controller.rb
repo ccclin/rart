@@ -4,6 +4,6 @@ class NoAuthApplicationController < ApplicationController
   private
 
   def do_only_unregistration
-    redirect_to root_path and return if @current_user
+    redirect_to root_path and return if current_user
   end
 end
