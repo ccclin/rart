@@ -1,0 +1,5 @@
+  Prefix Verb   URI Pattern         Controller#Action
+    sign GET    /sign(.:format)     signs#show
+api_sign GET    /api/sign(.:format) api/signs#show {:format=>"json"}
+         DELETE /api/sign(.:format) api/signs#destroy {:format=>"json"}
+         POST   /api/sign(.:format) api/signs#create {:format=>"json"}
