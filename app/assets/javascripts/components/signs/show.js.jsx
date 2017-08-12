@@ -1,4 +1,4 @@
-var SignIn = React.createClass({
+var SignShow = React.createClass({
   getInitialState: function () {
     return {};
   },
@@ -27,36 +27,33 @@ var SignIn = React.createClass({
     this.setState(state);
   },
 
-  checkStatus: function (response) {
-    if (response.status >= 200 && response.status < 300) {
-      return response;
+  fetchResult: function(result) {
+    if (result.is_login) {
+      window.location.href = '/';
     } else {
-      new Noty({
-        text: 'User not found', type: 'error', theme: 'relax',
-        layout: 'topCenter'
-      }).show();
+      this.fetchError(result);
+    };
+  },
+
+  fetchError: function(result) {
+    if (result) {
+      var error_message = result.error_message ? result.error_message : result.error ? result.error : 'Unauthorized';
+      Materialize.toast(error_message, 1000);
       this.refs.password.value = "";
       this.setState({
         password: "",
       });
-    }
-  },
-
-  parseJSON: function(response) {
-    return response.json();
+    };
   },
 
   _onSubmit: function (params, error_message) {
     if(Object.keys(error_message).length != 0) {
-      new Noty({
-        text: error_message[Object.keys(error_message)[0]], type: 'error', theme: 'relax',
-        layout: 'topCenter'
-      }).show();
+      Materialize.toast(error_message[Object.keys(error_message)[0]], 1000);
       return;
     }
     var token = document.head.querySelector("[name=csrf-token]").content;
 
-    fetch('/api/sign', {
+    fetch('/api/sign_in', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -66,23 +63,18 @@ var SignIn = React.createClass({
       },
       body: JSON.stringify(params),
       credentials: 'same-origin'
-    }).then(this.checkStatus)
-      .then(this.parseJSON)
-      .then(function(result){
-        if (result.is_login) {
-          window.location.href = '/';
-        } else {
-          var error_message = result.error_message ? result.error_message : 'User not found';
-          new Noty({
-            text: error_message, type: 'error', theme: 'relax',
-            layout: 'topCenter'
-          }).show();
-          this.refs.password.value = "";
-          this.setState({
-            password: "",
-          });
-        };
-      });
+    }).then(function(response){
+      if (response.ok) {
+        return response.json();
+      } else {
+        var error = new Error(response.statusText);
+        error.response = response;
+        throw error;
+      }
+    }).then(this.fetchResult)
+      .catch(function(error){
+        return error.response.json();
+      }).then(this.fetchError)
   },
 
   submitAndRun: function(e){
@@ -104,6 +96,9 @@ var SignIn = React.createClass({
   render: function() {
     return (
       <div>
+        <Navbar
+          is_login={false}
+        />
         <div className="row">
           <div className="col s12 m6 offset-m3">
             <h4>Sign In</h4>
@@ -118,7 +113,7 @@ var SignIn = React.createClass({
                   <label htmlFor="password">Password</label>
                 </div>
                 <div className="col m4 offset-m8 s6 offset-s6">
-                  <button className="btn waves-effect waves-light right" type="submit">Submit</button>
+                  <button className="btn waves-effect waves-light right deep-orange darken-3" type="submit">Submit</button>
                 </div>
               </div>
             </form>

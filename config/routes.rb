@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   resource :sign, only: [:show]
 
   namespace :api, defaults: { format: 'json' }  do
-    resource :sign, only: [:create, :destroy]
+    resource :sign_in, only: [:create]
+    resource :sign_out, only: [:destroy]
 
-    # resources :homes, only: [:index, :show], param: :uuid
+    resources :homes, only: [:index, :show]
     # # devise_for :users, controllers: { registrations: "api/users/registrations", sessions: "api/users/sessions", passwords: "api/users/passwords" }
     # resources :gifs, only: [:create]
 

@@ -14,6 +14,5 @@
 //= require turbolinks
 //= require react
 //= require react_ujs
-//= require noty.min
 //= require components
 //= require_tree .
