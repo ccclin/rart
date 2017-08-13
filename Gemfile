@@ -66,3 +66,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # api
 gem 'react-rails'
 gem 'rabl'
+
+# free hdd space
+gem "sys-filesystem"

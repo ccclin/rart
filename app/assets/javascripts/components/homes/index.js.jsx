@@ -1,7 +1,8 @@
 var HomeIndex = React.createClass({
   getInitialState: function () {
     return {
-      is_login: false
+      is_login: false,
+      diskinfo: {}
     };
   },
 
@@ -12,7 +13,8 @@ var HomeIndex = React.createClass({
 
   fetchloadPageResult: function(result) {
     this.setState({
-      is_login: result.is_login
+      is_login: result.is_login,
+      diskinfo: result.diskinfo
     });
   },
 
@@ -61,6 +63,18 @@ var HomeIndex = React.createClass({
         <Navbar
           is_login={this.state.is_login}
         />
+        <main>
+          <div className="row">
+            <div className="col s12 m6">
+              <div>
+                <h4 className="center-align">Free: {this.state.diskinfo.available_gb} GB</h4>
+              </div>
+              <div className="progress">
+                <div className="determinate" style={{width: this.state.diskinfo.percent + "%"}}></div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     );
   }

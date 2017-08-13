@@ -41,7 +41,10 @@ var Navbar = React.createClass({
 
       var login_obj = (
         <ul id="nav-mobile" className="side-nav fixed">
-          <li className="bold"><a href="getting-started.html" className="waves-effect waves-teal">Getting Started</a></li>
+          <li className="logo">
+            <h2 className="center-align"><i className="medium material-icons">device_hub</i></h2>
+          </li>
+          {/* <li className="bold"><a href="getting-started.html" className="waves-effect waves-teal">Getting Started</a></li>
           <li className="no-padding">
             <ul className="collapsible collapsible-accordion">
               <li className="bold active"><a className="collapsible-header active waves-effect waves-teal">CSS</a>
@@ -103,7 +106,7 @@ var Navbar = React.createClass({
           </li>
           <li className="bold"><a href="mobile.html" className="waves-effect waves-teal">Mobile</a></li>
           <li className="bold"><a href="showcase.html" className="waves-effect waves-teal">Showcase</a></li>
-          <li className="bold"><a href="themes.html" className="waves-effect waves-teal">Themes<span className="new badge"></span></a></li>
+          <li className="bold"><a href="themes.html" className="waves-effect waves-teal">Themes<span className="new badge"></span></a></li> */}
         </ul>
       )
     } else {
