@@ -2,7 +2,9 @@ var HomeIndex = React.createClass({
   getInitialState: function () {
     return {
       is_login: false,
-      diskinfo: {}
+      diskinfo: {},
+      side_urls: [],
+      controller: ""
     };
   },
 
@@ -14,7 +16,9 @@ var HomeIndex = React.createClass({
   fetchloadPageResult: function(result) {
     this.setState({
       is_login: result.is_login,
-      diskinfo: result.diskinfo
+      diskinfo: result.diskinfo,
+      side_urls: result.side_urls,
+      controller: result.controller
     });
   },
 
@@ -62,6 +66,8 @@ var HomeIndex = React.createClass({
       <div>
         <Navbar
           is_login={this.state.is_login}
+          side_urls={this.state.side_urls}
+          controller={this.state.controller}
         />
         <main>
           <div className="row">
