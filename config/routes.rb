@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   root to: "homes#index"
   resource :sign, only: [:show]
-  resources :jobs, only: [:new]
+  resources :torrents, only: [:new]
 
   namespace :api, defaults: { format: 'json' }  do
     resource :sign_in, only: [:create]
     resource :sign_out, only: [:destroy]
 
     resources :homes, only: [:index]
-    resources :jobs, only: [:new, :create]
+    resources :torrents, only: [:new, :create]
 
     # resources :users, only: [] do
     #   namespace :profile, module: :users do

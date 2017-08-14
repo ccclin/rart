@@ -1,8 +1,7 @@
-var HomeIndex = React.createClass({
+var TorrentNew = React.createClass({
   getInitialState: function () {
     return {
       is_login: false,
-      diskinfo: {},
       side_urls: [],
       controller: ""
     };
@@ -16,7 +15,6 @@ var HomeIndex = React.createClass({
   fetchloadPageResult: function(result) {
     this.setState({
       is_login: result.is_login,
-      diskinfo: result.diskinfo,
       side_urls: result.side_urls,
       controller: result.controller
     });
@@ -69,7 +67,7 @@ var HomeIndex = React.createClass({
           side_urls={this.state.side_urls}
           controller={this.state.controller}
         />
-        <main>
+        {/* <main>
           <div className="row">
             <div className="col s12 m6">
               <div>
@@ -80,7 +78,7 @@ var HomeIndex = React.createClass({
               </div>
             </div>
           </div>
-        </main>
+        </main> */}
       </div>
     );
   }
