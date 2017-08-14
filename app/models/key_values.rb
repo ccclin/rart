@@ -12,7 +12,7 @@ module KeyValues
 
   class SideBarUrl < KeyValues::Base
     self.data = [
-      { code: :home, controller: "api/homes", url: "/", name: "Home", is_public: true },
+      { code: :home, controller: "api/homes/index", url: "/", name: "Home", is_public: true },
       { code: :new_torrent, controller: "api/torrents/new", url: "/torrents/new", name: "New Torrent", is_public: true },
     ]
 
