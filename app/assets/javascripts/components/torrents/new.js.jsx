@@ -59,6 +59,45 @@ var TorrentNew = React.createClass({
     this.fetchApi(url, 'GET', null, this.fetchloadPageResult);
   },
 
+  _onChange: function (e) {
+    var state = {},
+        value;
+    if(e.target.type == 'checkbox'){
+      value = e.target.checked;
+    }else if(e.target.type == 'radio'){
+      if($.trim(e.target.value) == 'true'){
+        value = true;
+      }else if($.trim(e.target.value) == 'false'){
+        value = false;
+      }else{
+        value = $.trim(e.target.value);
+      }
+    }else if(e.target.type == 'file'){
+      if (e.dataTransfer) {
+        value = e.dataTransfer.files;
+      } else if (e.target) {
+        value = e.target.files;
+      }
+    }else{
+      value = e.target.value;
+    }
+    state[e.target.name] = value;
+    this.setState(state);
+  },
+
+  submitAndRun: function(e){
+    e.preventDefault();
+    var data = {torrent: {
+      torrent_file: this.refs.torrent_file.files,
+      magnet_url: this.refs.magnet_url.value.trim(),
+    }};
+    if (this.refs.magnet_url.value.trim() == "" && this.refs.torrent_file.files.length == 0) {
+      Materialize.toast("You need set one", 1000);
+      return;
+    }
+    // this._onSubmit(data, error_message);
+  },
+
   render: function() {
     return (
       <div>
@@ -70,20 +109,23 @@ var TorrentNew = React.createClass({
         <main>
           <div className="row">
             <div className="col s12 m6 offset-m3">
-              <form action="#">
+              <form onSubmit={this.submitAndRun}>
                 <h4>Upload File or Magnet Url</h4>
                 <div className="file-field input-field col m12 s12">
-                  <div className="btn">
+                  <div className="btn deep-orange darken-3">
                     <span>File</span>
-                    <input type="file"></input>
+                    <input type="file" id="torrent_file" ref="torrent_file" name="torrent_file" onChange={this._onChange}></input>
                   </div>
                   <div className="file-path-wrapper">
                     <input className="file-path validate" type="text"></input>
                   </div>
                 </div>
                 <div className="input-field col m12 s12">
-                  <input id="magnet_url" type="text" className="validate"></input>
+                  <input id="magnet_url" ref="magnet_url" name="magnet_url" type="text" className="validate"></input>
                   <label htmlFor="magnet_url">Magnet Url</label>
+                </div>
+                <div className="col m4 offset-m8 s6 offset-s6">
+                  <button className="btn waves-effect waves-light right deep-orange darken-3" type="submit">Upload</button>
                 </div>
               </form>
             </div>

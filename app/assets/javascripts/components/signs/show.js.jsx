@@ -105,11 +105,11 @@ var SignShow = React.createClass({
             <form onSubmit={this.submitAndRun}>
               <div className="row">
                 <div className="input-field col m6 s12">
-                  <input id="user_name" ref="user_name" type="text" className="validate"></input>
+                  <input id="user_name" ref="user_name" name="user_name" type="text" className="validate" onChange={this._onChange}></input>
                   <label htmlFor="user_name">User Name</label>
                 </div>
                 <div className="input-field col m6 s12">
-                  <input id="password" ref="password" type="password" className="validate"></input>
+                  <input id="password" ref="password" name="password" type="password" className="validate" onChange={this._onChange}></input>
                   <label htmlFor="password">Password</label>
                 </div>
                 <div className="col m4 offset-m8 s6 offset-s6">
