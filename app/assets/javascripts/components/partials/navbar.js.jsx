@@ -47,9 +47,9 @@ var Navbar = React.createClass({
           );
         };
       });
-      side_urls.push(
-        <li className="bold" key="logout"><a href="javascript:void(0)" onClick={this.handleLogout} className="waves-effect waves-teal">Sign Out</a></li>
-      );
+      // side_urls.push(
+      //   <li className="bold" key="logout"><a href="javascript:void(0)" onClick={this.handleLogout} className="waves-effect waves-teal">Sign Out</a></li>
+      // );
 
       var login_obj = (
         <ul id="nav-mobile" className="side-nav fixed">

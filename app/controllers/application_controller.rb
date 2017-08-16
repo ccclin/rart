@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    return false if session["uuid"].nil?
-    @@current_user ||= UserSession.find_by(uuid: session["uuid"])&.user
+    return nil if session["uuid"].nil?
+    @@current_user ||= UserSession.is_exprie?(session["uuid"])&.user
   end
 
   def current_user_exist?
-    ![false, nil].include?(current_user)
+    !current_user.nil?
   end
 end
