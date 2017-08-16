@@ -71,7 +71,7 @@ var HomeIndex = React.createClass({
         />
         <main>
           <div className="row">
-            <div className="col s12 m6">
+            <div className="col s12 m5 offset-m1">
               <div>
                 <h4 className="center-align">Free: {this.state.diskinfo.available_gb} GB</h4>
               </div>

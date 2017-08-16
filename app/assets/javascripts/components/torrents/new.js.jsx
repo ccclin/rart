@@ -67,18 +67,28 @@ var TorrentNew = React.createClass({
           side_urls={this.state.side_urls}
           controller={this.state.controller}
         />
-        {/* <main>
+        <main>
           <div className="row">
-            <div className="col s12 m6">
-              <div>
-                <h4 className="center-align">Free: {this.state.diskinfo.available_gb} GB</h4>
-              </div>
-              <div className="progress">
-                <div className="determinate" style={{width: this.state.diskinfo.percent + "%"}}></div>
-              </div>
+            <div className="col s12 m6 offset-m3">
+              <form action="#">
+                <h4>Upload File or Magnet Url</h4>
+                <div className="file-field input-field col m12 s12">
+                  <div className="btn">
+                    <span>File</span>
+                    <input type="file"></input>
+                  </div>
+                  <div className="file-path-wrapper">
+                    <input className="file-path validate" type="text"></input>
+                  </div>
+                </div>
+                <div className="input-field col m12 s12">
+                  <input id="magnet_url" type="text" className="validate"></input>
+                  <label htmlFor="magnet_url">Magnet Url</label>
+                </div>
+              </form>
             </div>
           </div>
-        </main> */}
+        </main>
       </div>
     );
   }

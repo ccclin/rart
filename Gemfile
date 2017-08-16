@@ -71,3 +71,5 @@ gem "rabl"
 gem "sys-filesystem"
 
 gem "active_hash"
+
+gem "xmlrpc"
