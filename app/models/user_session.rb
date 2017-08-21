@@ -13,4 +13,15 @@
 class UserSession < ApplicationRecord
   belongs_to :user
 
+
+  def self.is_exprie?(uuid = "")
+    if us = find_by(uuid: uuid)
+      if us.expired_at < Time.current
+        us.destroy
+        us = nil
+      end
+    end
+
+    us
+  end
 end

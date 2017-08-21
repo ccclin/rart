@@ -39,7 +39,7 @@ var Navbar = React.createClass({
       this.props.side_urls.forEach(function(element) {
         if (element.controller == props.controller) {
           side_urls.push(
-            <li className="active bold" key={element.url}><a href={element.url} className="waves-effect waves-teal">{element.name}</a></li>
+            <li className="active bold red accent-2" key={element.url}><a href={element.url} className="waves-effect waves-teal">{element.name}</a></li>
           );
         } else {
           side_urls.push(
@@ -47,9 +47,9 @@ var Navbar = React.createClass({
           );
         };
       });
-      side_urls.push(
-        <li className="bold" key="logout"><a href="javascript:void(0)" onClick={this.handleLogout} className="waves-effect waves-teal">Sign Out</a></li>
-      );
+      // side_urls.push(
+      //   <li className="bold" key="logout"><a href="javascript:void(0)" onClick={this.handleLogout} className="waves-effect waves-teal">Sign Out</a></li>
+      // );
 
       var login_obj = (
         <ul id="nav-mobile" className="side-nav fixed">
@@ -70,7 +70,7 @@ var Navbar = React.createClass({
     return (
       <header>
         <nav className="top-nav">
-          <div className="nav-wrapper red darken-3">
+          <div className="nav-wrapper red accent-2">
             {row}
           </div>
         </nav>

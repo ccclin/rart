@@ -5,6 +5,7 @@ class AuthApplicationController < ApplicationController
 
   def check_authenticate_user!
     unless current_user
+      session["uuid"] = nil
       redirect_to sign_path
     end
   end
